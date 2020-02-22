@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from '../project-card/project-card.component'
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from '../../app.state';
 
 @Component({
   selector: 'app-project-list',
@@ -8,20 +10,14 @@ import { Project } from '../project-card/project-card.component'
 })
 export class ProjectListComponent implements OnInit {
 
-  projects: Project[] = [
-    {
-      color: '#33FFD4',
-      name: 'My First Project'
-    },
-    {
-      color: '#A533FF',
-      name: 'My Second Project'
-    },
-  ]
+  projects$: Observable<any>;
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { 
+    this.projects$ = store.pipe(select('project'));
+  };
 
   ngOnInit() {
+    
   }
 
 }

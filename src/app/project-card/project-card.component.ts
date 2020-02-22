@@ -1,9 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-export interface Project {
-  color: string;
-  name: string;
-};
+import { Project } from 'src/models/project.model';
 
 @Component({
   selector: 'app-project-card',
@@ -17,6 +13,7 @@ export class ProjectCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("check project", this.project);
   }
 
 }
