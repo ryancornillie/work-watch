@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Project } from 'src/models/project.model';
-import { AddProject } from 'src/actions/project.actions';
+import { AddProject, RequestCreateProject } from 'src/actions/project.actions';
 
 @Component({
   selector: 'app-new-project-button',
@@ -18,7 +18,7 @@ export class NewProjectButtonComponent implements OnInit {
   }
 
   onNewProjectClick = function() {
-    this.store.dispatch(new AddProject({name: this.projectName, color: '#FF7A33'}));
+    this.store.dispatch(new RequestCreateProject({name: this.projectName, color: '#FF7A33'}));
   };
 
 }

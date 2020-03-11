@@ -10,6 +10,9 @@ import { ProjectIconComponent } from './project-icon/project-icon.component';
 import { NewProjectButtonComponent } from './new-project-button/new-project-button.component';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from '../reducers/project.reducer';
+import { HttpClientModule } from '@angular/common/http';
+import { ProjectEffects } from 'src/effects/project.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { reducer } from '../reducers/project.reducer';
     NbLayoutModule,
     NbButtonModule,
     NbInputModule,
-    StoreModule.forRoot({ project: reducer })
+    HttpClientModule,
+    StoreModule.forRoot({ project: reducer }),
+    EffectsModule.forRoot([ProjectEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
