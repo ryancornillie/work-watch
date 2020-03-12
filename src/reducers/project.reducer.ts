@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store'
 import { Project } from './../models/project.model'
 import * as ProjectActions from './../actions/project.actions'
 
-export function reducer(state: Project[] = [], action: ProjectActions.Actions) {
+export function projectReducer(state: Project[] = [], action: ProjectActions.Actions) {
 
     switch(action.type) {
         case ProjectActions.ADD_PROJECT:

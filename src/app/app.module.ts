@@ -9,10 +9,17 @@ import { NbThemeModule, NbCardModule, NbLayoutModule, NbButtonModule, NbInputMod
 import { ProjectIconComponent } from './project-icon/project-icon.component';
 import { NewProjectButtonComponent } from './new-project-button/new-project-button.component';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from '../reducers/project.reducer';
+import { projectReducer } from '../reducers/project.reducer';
+import { recordReducer } from '../reducers/record.reducer';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectEffects } from 'src/effects/project.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { StartTimeButtonComponent } from './start-time-button/start-time-button.component';
+
+let rootReducer = {
+  projects: projectReducer,
+  records: recordReducer
+}
 
 @NgModule({
   declarations: [
@@ -20,7 +27,8 @@ import { EffectsModule } from '@ngrx/effects';
     ProjectListComponent,
     ProjectCardComponent,
     ProjectIconComponent,
-    NewProjectButtonComponent
+    NewProjectButtonComponent,
+    StartTimeButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +40,7 @@ import { EffectsModule } from '@ngrx/effects';
     NbButtonModule,
     NbInputModule,
     HttpClientModule,
-    StoreModule.forRoot({ project: reducer }),
+    StoreModule.forRoot(rootReducer),
     EffectsModule.forRoot([ProjectEffects])
   ],
   providers: [],

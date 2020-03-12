@@ -12,7 +12,7 @@ export class NewProjectButtonComponent implements OnInit {
 
   projectName: string = '';
 
-  constructor(private store: Store<{ count: Project[] }>) { }
+  constructor(private store: Store<{ projects: Project[] }>) { }
 
   ngOnInit() {
   }

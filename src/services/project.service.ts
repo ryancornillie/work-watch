@@ -16,4 +16,4 @@ import { Project } from './../models/project.model';
         return this.http.post('http://127.0.0.1:5000/projects', project);
     }
     
-  }
+}

@@ -15,7 +15,7 @@ export class ProjectListComponent implements OnInit {
 
   constructor(private store: Store<AppState>) {
     this.store.dispatch(new RequestProjects());
-    this.projects$ = store.pipe(select('project'));
+    this.projects$ = store.pipe(select('projects'));
   };
 
   ngOnInit() {
