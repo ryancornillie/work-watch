@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProjectEffects } from 'src/effects/project.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StartTimeButtonComponent } from './start-time-button/start-time-button.component';
+import { RecordEffects } from 'src/effects/record.effects';
 
 let rootReducer = {
   projects: projectReducer,
@@ -41,7 +42,7 @@ let rootReducer = {
     NbInputModule,
     HttpClientModule,
     StoreModule.forRoot(rootReducer),
-    EffectsModule.forRoot([ProjectEffects])
+    EffectsModule.forRoot([ProjectEffects, RecordEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

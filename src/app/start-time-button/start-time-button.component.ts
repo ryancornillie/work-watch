@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Record } from 'src/models/record.model';
+import { RequestCreateRecord } from 'src/actions/record.actions';
 
 @Component({
   selector: 'app-start-time-button',
@@ -17,7 +18,16 @@ export class StartTimeButtonComponent implements OnInit {
   }
 
   startWork() {
-    // this.state.dis
+
+    const newRecord: Record = {
+      start_time: null,
+      end_time: null,
+      project_id: this.projectId
+    }
+
+    console.log("start work", newRecord)
+
+    this.store.dispatch(new RequestCreateRecord(newRecord));
   }
 
 }
