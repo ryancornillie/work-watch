@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Record } from 'src/models/record.model';
-import { RequestCreateRecord } from 'src/actions/record.actions';
+import { RequestCreateRecord, RequestUpdateRecord } from 'src/actions/record.actions';
 
 @Component({
   selector: 'app-start-time-button',
@@ -13,6 +13,7 @@ export class StartTimeButtonComponent implements OnInit {
   constructor(private store: Store<{ records: Record[] }>) { }
 
   @Input() projectId: string;
+  @Input() recordId: string;
 
   ngOnInit() {
   }
@@ -28,6 +29,11 @@ export class StartTimeButtonComponent implements OnInit {
     console.log("start work", newRecord)
 
     this.store.dispatch(new RequestCreateRecord(newRecord));
+  }
+
+  stopWork() {
+
+    this.store.dispatch(new RequestUpdateRecord({recordId: this.recordId, projectId: this.projectId}));
   }
 
 }

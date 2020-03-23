@@ -8,7 +8,6 @@ export function projectReducer(state: Project[] = [], action: ProjectActions.Act
         case ProjectActions.ADD_PROJECT:
             return [...state, action.payload];
         case ProjectActions.ADD_PROJECTS:
-            console.log(action.payload);
             return [...action.payload]
         default:
             return state;

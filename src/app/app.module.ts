@@ -29,7 +29,7 @@ let rootReducer = {
     ProjectCardComponent,
     ProjectIconComponent,
     NewProjectButtonComponent,
-    StartTimeButtonComponent
+    StartTimeButtonComponent,
   ],
   imports: [
     BrowserModule,

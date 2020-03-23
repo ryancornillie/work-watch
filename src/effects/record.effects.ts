@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, catchError, concatMap, mergeMap, tap, switchMap } from 'rxjs/operators';
 import { RecordService } from 'src/services/record.service';
-import { REQUEST_CREATE_RECORD, RequestCreateRecord, ADD_RECORD } from 'src/actions/record.actions';
+import { REQUEST_CREATE_RECORD, RequestCreateRecord, ADD_RECORD, RequestUpdateRecord, REQUEST_UPDATE_RECORD } from 'src/actions/record.actions';
 import { REQUEST_PROJECTS } from 'src/actions/project.actions';
 
 @Injectable()
@@ -17,6 +17,14 @@ export class RecordEffects {
     switchMap(resp => [ {type: ADD_RECORD, payload: resp }, { type: REQUEST_PROJECTS} ]),
     catchError(() => EMPTY))
   );
+
+  updateRecord$ = createEffect(() => this.actions$.pipe(
+    ofType<RequestUpdateRecord>(REQUEST_UPDATE_RECORD),
+    concatMap((action) => this.recordService.stopWork(action.payload)),
+    switchMap(() => [ {type: REQUEST_PROJECTS} ]),
+    catchError(() => EMPTY))
+  );
+ 
  
   constructor(
     private actions$: Actions,
