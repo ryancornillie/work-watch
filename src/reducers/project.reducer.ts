@@ -9,7 +9,7 @@ export function projectReducer(state: Project[] = [], action: ProjectActions.Act
             return [...state, action.payload];
         case ProjectActions.ADD_PROJECTS:
             console.log(action.payload);
-            return [...state, ...action.payload]
+            return [...action.payload]
         default:
             return state;
     }
